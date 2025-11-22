@@ -18,6 +18,7 @@ QtHexGame::QtHexGame(QWidget *parent)
         lay->setContentsMargins(0, 0, 0, 0);
         lay->setSpacing(0);
     }
+	setFixedSize(900, 500);
 }
 
 QtHexGame::~QtHexGame()

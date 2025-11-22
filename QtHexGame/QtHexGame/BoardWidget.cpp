@@ -16,7 +16,7 @@ BoardWidget::BoardWidget(QWidget *parent)
 }
 
 QPointF BoardWidget::xyToPoint(int x, int y) const {
-	return QPointF(fr + m_cellWd * (x + y/2.0), fr + m_cellHt * y);
+	return QPointF(m_cellWd * (x + y/2.0 + 1), m_cellHt * (y+1));
 }
 
 void BoardWidget::paintEvent(QPaintEvent* event)
@@ -24,7 +24,11 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 	double ww = width();
     double wh = height();
 
-	double w = width() - fr*2;
+#if 1
+    m_cellHt = wh / (N_HORZ + 1);
+    m_cellWd = m_cellHt * 2 / sqrt(3);
+#else
+	double w = width();
     double h = height() - fr*2;
     if (h < w / 3.0 * sqrt(3.0))
         w = h * 3.0 / sqrt(3.0);
@@ -32,6 +36,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     double bh = w2 * sqrt(3.0);
     m_cellWd = w2 * 2 / (N_HORZ - 1);
     m_cellHt = bh / (N_HORZ - 1);
+#endif
 
     QPainter painter(this);
     // アンチエイリアシング（滑らかに描画）

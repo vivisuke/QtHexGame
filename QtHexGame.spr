@@ -9,7 +9,7 @@ SPR# 状 P Open Close ver     Type  概要
 0007 ● C 11/22            │ToDo│BoardWidget：盤面グリッド：左右辺を白抜き黒線表示
 0008 ◎ C 11/22 11/22 0.001│ToDo│BoardWidget：黒石・白石表示
 0009 ● C 11/22            │ToDo│BoardWidget：盤面座標（a～、1～）表示
-0010 ● C 11/22            │問題│BoardWidget：盤面サイズが 3x3 以下だと、石表示がはみ出す
+0010 ◎ C 11/22 11/22 0.001│問題│BoardWidget：盤面サイズが 3x3 以下だと、石表示がはみ出す
 0011 ◎ C 11/22 11/22 0.001│ToDo│BoardWidget：黒石・白石影表示
 0012 ● C 11/22            │ToDo│BoardWidget：上下余白をセル高、左右余白をセル幅に
 0013 ◎ C 11/22 11/22 0.001│ToDo│レイアウトのマージンを０に
