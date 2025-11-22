@@ -95,11 +95,13 @@
     <QtRcc Include="QtHexGame.qrc" />
     <QtUic Include="QtHexGame.ui" />
     <QtMoc Include="QtHexGame.h" />
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardWidget.cpp" />
     <ClCompile Include="QtHexGame.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
     <ClInclude Include="BoardWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

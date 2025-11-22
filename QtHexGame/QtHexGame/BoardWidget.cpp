@@ -4,8 +4,8 @@
 const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
 
-QPoint BoardWidget::xyToPoint(double x, double y) const {
-	return QPoint(fr + m_cellWd * (x + y/2), fr + m_cellHt * y);
+QPointF BoardWidget::xyToPoint(int x, int y) const {
+	return QPointF(fr + m_cellWd * (x + y/2.0), fr + m_cellHt * y);
 }
 
 void BoardWidget::paintEvent(QPaintEvent* event)
@@ -46,8 +46,33 @@ void BoardWidget::paintEvent(QPaintEvent* event)
         painter.drawLine(xyToPoint(N_HORZ - 1-i, N_HORZ - 1), xyToPoint(N_HORZ - 1, N_HORZ - 1-i));
     }
     painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(0, N_HORZ - 1));
+    pen.setColor(Qt::black);            // 黒線
+    pen.setWidth(10);                    // 線幅 10px
+    painter.setPen(pen);
+	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, N_HORZ-1));
+    painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(N_HORZ - 1, N_HORZ - 1));
+    pen.setColor(Qt::white);            // 白線
     pen.setWidth(8);                    // 線幅 8px
+    painter.setPen(pen);
+	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, N_HORZ-1));
+    painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(N_HORZ - 1, N_HORZ - 1));
+    pen.setColor(Qt::black);            // 黒線
+    pen.setWidth(10);                    // 線幅 10px
     painter.setPen(pen);
 	painter.drawLine(xyToPoint(0, 0), xyToPoint(N_HORZ-1, 0));
 	painter.drawLine(xyToPoint(0, N_HORZ-1), xyToPoint(N_HORZ-1, N_HORZ-1));
+	//
+	drawStone(painter, 1, 2, BLACK);
+	drawStone(painter, 2, 0, WHITE);
+	drawStone(painter, 3, 0, BLACK);
+	drawStone(painter, 2, 1, WHITE);
+}
+void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
+    QPen pen;
+    pen.setWidth(1);                    // 線幅 1px
+    pen.setColor(Qt::black);            // 黒線
+    painter.setPen(pen);
+    painter.setBrush(QBrush(col == BLACK ? Qt::black : Qt::white));  // 黒 or 白色で塗りつぶし
+	double R = m_cellWd / 2 * 0.75;
+    painter.drawEllipse(xyToPoint(x, y), R, R);
 }
