@@ -10,9 +10,14 @@ public:
     	: QWidget(parent)
 	{
 	}
+public:
+	QPoint	xyToPoint(double x, double y) const;
 
 protected:
     void paintEvent(QPaintEvent* event) override;
 
+private:
+    double	m_cellWd;
+    double	m_cellHt;
 };
 

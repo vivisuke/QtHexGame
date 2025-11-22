@@ -3,7 +3,7 @@ SPR# 状 P Open Close ver     Type  概要
 0001 ◎ C 11/22 11/22 0.001│ToDo│プロジェクト作成
 0002 ◎ C 11/22 11/22 0.001│ToDo│盤面表示用 BoardWidget 設置
 0003 ● C 11/22            │ToDo│盤面クラス Board 追加
-0004 ● C 11/22            │ToDo│
+0004 ◎ C 11/22 11/22 0.001│ToDo│BoardWidget::xyToPoint(x, y)
 0005 ● C 11/22            │ToDo│
 0006 ● C 11/22            │ToDo│
 0007 ● C 11/22            │ToDo│
