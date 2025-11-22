@@ -7,10 +7,7 @@ class BoardWidget :
     public QWidget
 {
 public:
-    BoardWidget(QWidget *parent)
-    	: QWidget(parent)
-	{
-	}
+    BoardWidget(QWidget *parent);
 public:
 	QPointF	xyToPoint(int x, int y) const;
 	void	drawStone(QPainter&, int x, int y, Color col) const;
