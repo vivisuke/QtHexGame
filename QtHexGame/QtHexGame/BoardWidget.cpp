@@ -1,7 +1,7 @@
 ﻿#include <QPainter>
 #include "BoardWidget.h"
 
-const int N_HORZ = 5;
+const int N_HORZ = 3;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
@@ -79,10 +79,21 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 	painter.drawLine(xyToPoint(0, 0), xyToPoint(N_HORZ-1, 0));
 	painter.drawLine(xyToPoint(0, N_HORZ-1), xyToPoint(N_HORZ-1, N_HORZ-1));
 	//
+	painter.setPen(Qt::black);                                   // 文字色
+	painter.setFont(QFont("Meiryo UI", 14, QFont::Bold));
+	//painter.drawText(xyToPoint(0, 0) - QPointF(0, m_cellHt), "Hello");
+	//painter.drawText(10, 10, "Hello");
+    //painter.drawText(xyToPoint(0, 0) - QPointF(0, m_cellHt/2), "Hello");
+    for(int x = 0; x < N_HORZ; ++x)
+	    painter.drawText(xyToPoint(x, 0) - QPointF(8, m_cellHt/2), QChar( 'a'+x));
+    for(int y = 0; y < N_HORZ; ++y)
+	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y).rightJustified(2));
+    //
 	drawStone(painter, 1, 2, BLACK);
 	drawStone(painter, 2, 0, WHITE);
 	drawStone(painter, 3, 0, BLACK);
 	drawStone(painter, 2, 1, WHITE);
+    drawStone(painter, 0, 2, BLACK);
 }
 void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
 	double R = m_cellWd / 2 * 0.75;

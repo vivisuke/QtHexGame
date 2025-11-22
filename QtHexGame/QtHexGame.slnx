@@ -2,5 +2,5 @@
   <Configurations>
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="QtHexGame/QtHexGame.vcxproj" />
+  <Project Path="QtHexGame/QtHexGame.vcxproj" Id="879dee6e-9c97-444d-a325-522e3c6881eb" />
 </Solution>
