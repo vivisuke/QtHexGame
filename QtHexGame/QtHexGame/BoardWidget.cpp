@@ -41,5 +41,9 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     	painter.drawLine(xyToPoint(0, i), xyToPoint(N_HORZ-1, i));
     	painter.drawLine(xyToPoint(i, 0), xyToPoint(i, N_HORZ-1));
     }
+    for(int i = 1; i < N_HORZ; ++i) {
+    	painter.drawLine(xyToPoint(i, 0), xyToPoint(0, i));
+        painter.drawLine(xyToPoint(N_HORZ - 1-i, N_HORZ - 1), xyToPoint(N_HORZ - 1, N_HORZ - 1-i));
+    }
     painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(0, N_HORZ - 1));
 }
