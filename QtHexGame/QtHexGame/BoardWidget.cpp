@@ -1,7 +1,7 @@
 ﻿#include <QPainter>
 #include "BoardWidget.h"
 
-const int N_HORZ = 3;
+const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
@@ -21,6 +21,8 @@ QPointF BoardWidget::xyToPoint(int x, int y) const {
 
 void BoardWidget::paintEvent(QPaintEvent* event)
 {
+	qDebug() << "BoardWidget::paintEvent(QPaintEvent* event)";
+
 	double ww = width();
     double wh = height();
 
@@ -87,7 +89,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     for(int x = 0; x < N_HORZ; ++x)
 	    painter.drawText(xyToPoint(x, 0) - QPointF(8, m_cellHt/2), QChar( 'a'+x));
     for(int y = 0; y < N_HORZ; ++y)
-	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y).rightJustified(2));
+	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y+1).rightJustified(2));
     //
 	drawStone(painter, 1, 2, BLACK);
 	drawStone(painter, 2, 0, WHITE);
