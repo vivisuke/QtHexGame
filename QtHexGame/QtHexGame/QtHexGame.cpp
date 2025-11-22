@@ -14,6 +14,10 @@ QtHexGame::QtHexGame(QWidget *parent)
     setAutoFillBackground(true);
 #endif
 	//centralWidget()->setContentsMargins(0, 0, 0, 0);
+	if (QLayout *lay = centralWidget()->layout()) {
+        lay->setContentsMargins(0, 0, 0, 0);
+        lay->setSpacing(0);
+    }
 }
 
 QtHexGame::~QtHexGame()

@@ -1,7 +1,7 @@
 ﻿#include <QPainter>
 #include "BoardWidget.h"
 
-const int N_HORZ = 4;
+const int N_HORZ = 5;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
