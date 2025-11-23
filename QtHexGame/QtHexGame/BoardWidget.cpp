@@ -2,7 +2,7 @@
 #include <QMouseEvent>
 #include "BoardWidget.h"
 
-const int N_HORZ = 11;
+const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
