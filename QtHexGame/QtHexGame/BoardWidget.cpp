@@ -1,7 +1,8 @@
 ﻿#include <QPainter>
+#include <QMouseEvent>
 #include "BoardWidget.h"
 
-const int N_HORZ = 4;
+const int N_HORZ = 11;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
@@ -87,7 +88,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 	//painter.drawText(10, 10, "Hello");
     //painter.drawText(xyToPoint(0, 0) - QPointF(0, m_cellHt/2), "Hello");
     for(int x = 0; x < N_HORZ; ++x)
-	    painter.drawText(xyToPoint(x, 0) - QPointF(8, m_cellHt/2), QChar( 'a'+x));
+	    painter.drawText(xyToPoint(x, 0) - QPointF(6, m_cellHt/2), QChar( 'a'+x));
     for(int y = 0; y < N_HORZ; ++y)
 	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y+1).rightJustified(2));
     //
@@ -95,7 +96,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 	drawStone(painter, 2, 0, WHITE);
 	drawStone(painter, 3, 0, BLACK);
 	drawStone(painter, 2, 1, WHITE);
-    drawStone(painter, 0, 2, BLACK);
+    //drawStone(painter, 0, 2, BLACK);
 }
 void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
 	double R = m_cellWd / 2 * 0.75;
@@ -121,4 +122,9 @@ void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
     painter.setPen(pen);
     painter.setBrush(QBrush(col == BLACK ? Qt::black : Qt::white));  // 黒 or 白色で塗りつぶし
     painter.drawEllipse(center, R, R);
+}
+void BoardWidget::mousePressEvent(QMouseEvent *event) {
+	qDebug() << "mousePressEvent(QMouseEvent *event)";
+    QPoint pos = event->pos();
+    qDebug() << "クリック位置:" << pos;
 }

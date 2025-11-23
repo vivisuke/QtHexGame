@@ -29,6 +29,15 @@
      <height>33</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Game">
+    <property name="title">
+     <string>&amp;Game</string>
+    </property>
+    <addaction name="actionGame_Start"/>
+    <addaction name="actione_Xit"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menu_Game"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -37,8 +46,19 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionGame_Start"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionGame_Start">
+   <property name="text">
+    <string>Game &amp;Start</string>
+   </property>
+  </action>
+  <action name="actione_Xit">
+   <property name="text">
+    <string>e&amp;Xit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
