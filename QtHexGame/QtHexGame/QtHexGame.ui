@@ -173,6 +173,10 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionGame_Start">
+   <property name="icon">
+    <iconset>
+     <normaloff>resources/play_black.png</normaloff>resources/play_black.png</iconset>
+   </property>
    <property name="text">
     <string>Game &amp;Start</string>
    </property>
