@@ -19,6 +19,13 @@ BoardWidget::BoardWidget(QWidget *parent)
 QPointF BoardWidget::xyToPoint(int x, int y) const {
 	return QPointF(m_cellWd * (x + y/2.0 + 1), m_cellHt * (y+1));
 }
+QPoint BoardWidget::posToXY(QPoint pos) const {
+	auto org = xyToPoint(0, 0);
+	int y = round((pos.y() - org.y()) / m_cellHt);
+	auto x0 = xyToPoint(0, y);
+	int x = round((pos.x() - x0.x()) / m_cellWd);
+	return QPoint(x, y);
+}
 
 void BoardWidget::paintEvent(QPaintEvent* event)
 {
@@ -127,4 +134,6 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
 	qDebug() << "mousePressEvent(QMouseEvent *event)";
     QPoint pos = event->pos();
     qDebug() << "クリック位置:" << pos;
+    auto xy = posToXY(pos);
+    qDebug() << "x, y = " << xy;
 }

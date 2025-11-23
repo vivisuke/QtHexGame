@@ -11,6 +11,7 @@ public:
 public:
 	QPointF	xyToPoint(int x, int y) const;
 	void	drawStone(QPainter&, int x, int y, Color col) const;
+	QPoint	posToXY(QPoint pos) const;
 
 protected:
     void paintEvent(QPaintEvent* event) override;
