@@ -2,6 +2,8 @@
 #include <QMouseEvent>
 #include "BoardWidget.h"
 
+extern Board *g_bd;
+
 const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
 
@@ -99,11 +101,21 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     for(int y = 0; y < N_HORZ; ++y)
 	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y+1).rightJustified(2));
     //
+#if 0
 	drawStone(painter, 1, 2, BLACK);
 	drawStone(painter, 2, 0, WHITE);
 	drawStone(painter, 3, 0, BLACK);
 	drawStone(painter, 2, 1, WHITE);
     //drawStone(painter, 0, 2, BLACK);
+#endif
+    g_bd->set_color(1, 1, BLACK);
+    for(int y = 0; y < N_HORZ; ++y) {
+	    for(int x = 0; x < N_HORZ; ++x) {
+	    	Color col = g_bd->get_color(x, y);
+	    	if( col != EMPTY )
+				drawStone(painter, x, y, col);
+	    }
+    }
 }
 void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
 	double R = m_cellWd / 2 * 0.75;

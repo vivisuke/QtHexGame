@@ -1,9 +1,13 @@
 ﻿#include "QtHexGame.h"
+#include "Board.h"
+
+Board *g_bd = nullptr;
 
 QtHexGame::QtHexGame(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::QtHexGameClass())
 {
+	g_bd = new Board(4);
     ui->setupUi(this);
 #if 0
     // 囲碁盤っぽい緑系（例）
