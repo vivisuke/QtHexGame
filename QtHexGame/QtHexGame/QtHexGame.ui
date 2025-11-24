@@ -114,7 +114,7 @@
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap>resources/circle_white.png</pixmap>
+             <pixmap>resources/stone_white.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -157,7 +157,11 @@
      <string>&amp;Game</string>
     </property>
     <addaction name="actionGame_Start"/>
+    <addaction name="action_Init"/>
+    <addaction name="separator"/>
     <addaction name="actione_Xit"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
     <addaction name="separator"/>
    </widget>
    <addaction name="menu_Game"/>
@@ -170,6 +174,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionGame_Start"/>
+   <addaction name="action_Init"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionGame_Start">
@@ -184,6 +189,15 @@
   <action name="actione_Xit">
    <property name="text">
     <string>e&amp;Xit</string>
+   </property>
+  </action>
+  <action name="action_Init">
+   <property name="icon">
+    <iconset>
+     <normaloff>resources/first_page.png</normaloff>resources/first_page.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Init</string>
    </property>
   </action>
  </widget>
