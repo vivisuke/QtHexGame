@@ -157,6 +157,7 @@
      <string>&amp;Game</string>
     </property>
     <addaction name="actionGame_Start"/>
+    <addaction name="action_Pause"/>
     <addaction name="action_Init"/>
     <addaction name="separator"/>
     <addaction name="actione_Xit"/>
@@ -174,6 +175,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionGame_Start"/>
+   <addaction name="action_Pause"/>
    <addaction name="action_Init"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -198,6 +200,15 @@
    </property>
    <property name="text">
     <string>&amp;Init</string>
+   </property>
+  </action>
+  <action name="action_Pause">
+   <property name="icon">
+    <iconset>
+     <normaloff>resources/pause.png</normaloff>resources/pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Pause</string>
    </property>
   </action>
  </widget>
