@@ -26,7 +26,7 @@ SPR# 状 P Open Close ver     Type  概要
 0024 ◎ C 11/24 11/24 0.001│ToDo│Game > Pause メニュー・ツールバー 追加
 0025 ◎ C 11/24 11/24 0.001│ToDo│Board の状態を BoardWidget に表示
 0026 ◎ C 11/24 11/24 0.001│ToDo│QtHexGame.cpp：Board *g_bd; 定義、初期化
-0027 ● C 11/24            │ToDo│
-0028 ● C 11/24            │ToDo│
+0027 ● C 11/24            │ToDo│マウスクリック：黒白交互に着手可能に
+0028 ◎ C 11/24 11/25 0.001│ToDo│Init アクション：盤面初期化
 0029 ● C 11/24            │ToDo│
 0030 ● C 11/24            │ToDo│

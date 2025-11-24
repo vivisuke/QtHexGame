@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <QtWidgets/QMainWindow>
 #include "ui_QtHexGame.h"
@@ -14,6 +14,12 @@ class QtHexGame : public QMainWindow
 public:
     QtHexGame(QWidget *parent = nullptr);
     ~QtHexGame();
+
+protected:
+    void do_connect_actions();
+
+private slots:
+    void on_actionInitGame_triggered();
 
 private:
     Ui::QtHexGameClass *ui;

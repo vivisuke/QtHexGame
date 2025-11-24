@@ -9,6 +9,7 @@ QtHexGame::QtHexGame(QWidget *parent)
 {
 	g_bd = new Board(4);
     ui->setupUi(this);
+    do_connect_actions();
 #if 0
     // 囲碁盤っぽい緑系（例）
     QPalette pal = palette();                     // 現在の palette を取得
@@ -30,3 +31,13 @@ QtHexGame::~QtHexGame()
     delete ui;
 }
 
+void QtHexGame::do_connect_actions() {
+    connect(ui->action_Init, &QAction::triggered, 
+        this, &QtHexGame::on_actionInitGame_triggered);
+}
+
+void QtHexGame::on_actionInitGame_triggered() {
+	qDebug() << "QtHexGame::on_actionInitGame_triggered()";
+	g_bd->init();
+	ui->board->update();
+}

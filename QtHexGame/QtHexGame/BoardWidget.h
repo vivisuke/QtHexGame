@@ -17,6 +17,9 @@ protected:
     void paintEvent(QPaintEvent* event) override;
     void mousePressEvent(QMouseEvent *event) override;
 
+private slots:
+    void on_actionInitGame_triggered();
+
 private:
     double	m_cellWd;
     double	m_cellHt;

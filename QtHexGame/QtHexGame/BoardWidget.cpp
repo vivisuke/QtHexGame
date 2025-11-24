@@ -108,7 +108,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 	drawStone(painter, 2, 1, WHITE);
     //drawStone(painter, 0, 2, BLACK);
 #endif
-    g_bd->set_color(1, 1, BLACK);
+    //g_bd->set_color(1, 1, BLACK);
     for(int y = 0; y < N_HORZ; ++y) {
 	    for(int x = 0; x < N_HORZ; ++x) {
 	    	Color col = g_bd->get_color(x, y);
@@ -148,4 +148,10 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
     qDebug() << "クリック位置:" << pos;
     auto xy = posToXY(pos);
     qDebug() << "x, y = " << xy;
+    if( xy.x() < 0 || xy.x() >= N_HORZ || xy.y() < 0 || xy.y() >= N_HORZ ) return;
+    g_bd->set_color(xy.x(), xy.y(), BLACK);
+    this->update();
+}
+void BoardWidget::on_actionInitGame_triggered() {
+	qDebug() << "BoardWidget::on_actionInitGame_triggered()";
 }
