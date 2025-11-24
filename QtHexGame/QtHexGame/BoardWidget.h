@@ -3,9 +3,10 @@
 #include <qwidget.h>
 #include "Board.h"
 
-class BoardWidget :
-    public QWidget
+class BoardWidget : public QWidget
 {
+    //Q_OBJECT
+
 public:
     BoardWidget(QWidget *parent);
 public:
@@ -16,6 +17,9 @@ public:
 protected:
     void paintEvent(QPaintEvent* event) override;
     void mousePressEvent(QMouseEvent *event) override;
+
+//signals:
+//    void	next_changed();
 
 private slots:
     void on_actionInitGame_triggered();

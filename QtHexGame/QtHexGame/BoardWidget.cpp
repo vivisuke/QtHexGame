@@ -1,11 +1,12 @@
 ﻿#include <QPainter>
 #include <QMouseEvent>
 #include "BoardWidget.h"
+#include "QtHexGame.h"
 
 extern Board *g_bd;
 extern Global g;
 
-const int N_HORZ = 4;
+//const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
 
 BoardWidget::BoardWidget(QWidget *parent)
@@ -38,7 +39,7 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     double wh = height();
 
 #if 1
-    m_cellHt = wh / (N_HORZ + 1);
+    m_cellHt = wh / (g.N_HORZ + 1);
     m_cellWd = m_cellHt * 2 / sqrt(3);
 #else
 	double w = width();
@@ -66,40 +67,40 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 
     //painter.drawLine(QPoint(0, 0), QPoint(ww, wh));
 
-    for(int i = 0; i < N_HORZ; ++i) {
-    	painter.drawLine(xyToPoint(0, i), xyToPoint(N_HORZ-1, i));
-    	painter.drawLine(xyToPoint(i, 0), xyToPoint(i, N_HORZ-1));
+    for(int i = 0; i < g.N_HORZ; ++i) {
+    	painter.drawLine(xyToPoint(0, i), xyToPoint(g.N_HORZ-1, i));
+    	painter.drawLine(xyToPoint(i, 0), xyToPoint(i, g.N_HORZ-1));
     }
-    for(int i = 1; i < N_HORZ; ++i) {
+    for(int i = 1; i < g.N_HORZ; ++i) {
     	painter.drawLine(xyToPoint(i, 0), xyToPoint(0, i));
-        painter.drawLine(xyToPoint(N_HORZ - 1-i, N_HORZ - 1), xyToPoint(N_HORZ - 1, N_HORZ - 1-i));
+        painter.drawLine(xyToPoint(g.N_HORZ - 1-i, g.N_HORZ - 1), xyToPoint(g.N_HORZ - 1, g.N_HORZ - 1-i));
     }
     const int LNWD = 4;
-    painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(0, N_HORZ - 1));
+    painter.drawLine(xyToPoint(g.N_HORZ - 1, 0), xyToPoint(0, g.N_HORZ - 1));
     pen.setColor(Qt::black);            // 黒線
     pen.setWidth(LNWD+2);               // 線幅 px
     painter.setPen(pen);
-	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, N_HORZ-1));
-    painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(N_HORZ - 1, N_HORZ - 1));
+	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, g.N_HORZ-1));
+    painter.drawLine(xyToPoint(g.N_HORZ - 1, 0), xyToPoint(g.N_HORZ - 1, g.N_HORZ - 1));
     pen.setColor(Qt::white);            // 白線
     pen.setWidth(LNWD);                 // 線幅 px
     painter.setPen(pen);
-	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, N_HORZ-1));
-    painter.drawLine(xyToPoint(N_HORZ - 1, 0), xyToPoint(N_HORZ - 1, N_HORZ - 1));
+	painter.drawLine(xyToPoint(0, 0), xyToPoint(0, g.N_HORZ-1));
+    painter.drawLine(xyToPoint(g.N_HORZ - 1, 0), xyToPoint(g.N_HORZ - 1, g.N_HORZ - 1));
     pen.setColor(Qt::black);            // 黒線
     pen.setWidth(LNWD+2);               // 線幅 px
     painter.setPen(pen);
-	painter.drawLine(xyToPoint(0, 0), xyToPoint(N_HORZ-1, 0));
-	painter.drawLine(xyToPoint(0, N_HORZ-1), xyToPoint(N_HORZ-1, N_HORZ-1));
+	painter.drawLine(xyToPoint(0, 0), xyToPoint(g.N_HORZ-1, 0));
+	painter.drawLine(xyToPoint(0, g.N_HORZ-1), xyToPoint(g.N_HORZ-1, g.N_HORZ-1));
 	//
 	painter.setPen(Qt::black);                                   // 文字色
 	painter.setFont(QFont("Meiryo UI", 14, QFont::Bold));
 	//painter.drawText(xyToPoint(0, 0) - QPointF(0, m_cellHt), "Hello");
 	//painter.drawText(10, 10, "Hello");
     //painter.drawText(xyToPoint(0, 0) - QPointF(0, m_cellHt/2), "Hello");
-    for(int x = 0; x < N_HORZ; ++x)
+    for(int x = 0; x < g.N_HORZ; ++x)
 	    painter.drawText(xyToPoint(x, 0) - QPointF(6, m_cellHt/2), QChar( 'a'+x));
-    for(int y = 0; y < N_HORZ; ++y)
+    for(int y = 0; y < g.N_HORZ; ++y)
 	    painter.drawText(xyToPoint(0, y) - QPointF(m_cellWd/2+16, -8), QString::number(y+1).rightJustified(2));
     //
 #if 0
@@ -110,8 +111,8 @@ void BoardWidget::paintEvent(QPaintEvent* event)
     //drawStone(painter, 0, 2, BLACK);
 #endif
     //g_bd->set_color(1, 1, BLACK);
-    for(int y = 0; y < N_HORZ; ++y) {
-	    for(int x = 0; x < N_HORZ; ++x) {
+    for(int y = 0; y < g.N_HORZ; ++y) {
+	    for(int x = 0; x < g.N_HORZ; ++x) {
 	    	Color col = g_bd->get_color(x, y);
 	    	if( col != EMPTY )
 				drawStone(painter, x, y, col);
@@ -149,9 +150,12 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
     qDebug() << "クリック位置:" << pos;
     auto xy = posToXY(pos);
     qDebug() << "x, y = " << xy;
-    if( xy.x() < 0 || xy.x() >= N_HORZ || xy.y() < 0 || xy.y() >= N_HORZ ) return;
+    if( xy.x() < 0 || xy.x() >= g.N_HORZ || xy.y() < 0 || xy.y() >= g.N_HORZ ) return;
     g_bd->set_color(xy.x(), xy.y(), g.m_next);
     g.m_next = (BLACK+WHITE) - g.m_next;
+    auto* mw = qobject_cast<QtHexGame*>(QApplication::activeWindow());
+    mw->update_next();
+    //emit next_changed();
     this->update();
 }
 void BoardWidget::on_actionInitGame_triggered() {

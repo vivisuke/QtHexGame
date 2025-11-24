@@ -18,8 +18,9 @@ public:
 protected:
     void do_connect_actions();
 
-private slots:
+public slots:
     void on_actionInitGame_triggered();
+    void update_next();
 
 private:
     Ui::QtHexGameClass *ui;

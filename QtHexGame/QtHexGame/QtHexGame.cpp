@@ -1,4 +1,5 @@
 ﻿#include "QtHexGame.h"
+#include "BoardWidget.h"
 #include "Board.h"
 
 Board *g_bd = nullptr;
@@ -8,7 +9,7 @@ QtHexGame::QtHexGame(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::QtHexGameClass())
 {
-	g_bd = new Board(4);
+	g_bd = new Board(g.N_HORZ);
     ui->setupUi(this);
     do_connect_actions();
 #if 0
@@ -25,6 +26,7 @@ QtHexGame::QtHexGame(QWidget *parent)
         lay->setSpacing(0);
     }
 	setFixedSize(900, 500);
+	update_next();
 }
 
 QtHexGame::~QtHexGame()
@@ -33,8 +35,25 @@ QtHexGame::~QtHexGame()
 }
 
 void QtHexGame::do_connect_actions() {
+    //connect(ui->board, &BoardWidget::next_changed, 
+    //    this, &QtHexGame::update_next);
+
     connect(ui->action_Init, &QAction::triggered, 
         this, &QtHexGame::on_actionInitGame_triggered);
+}
+
+void QtHexGame::update_next() {
+	if( g.m_next == BLACK ) {
+		ui->next_black->setStyleSheet("color: blue;");
+		ui->next_white->setStyleSheet("color: transparent;");
+		//ui->next_black->show();
+		//ui->next_white->hide();
+	} else {
+		ui->next_black->setStyleSheet("color: transparent;");
+		ui->next_white->setStyleSheet("color: blue;");
+		//ui->next_black->hide();
+		//ui->next_white->show();
+	}
 }
 
 void QtHexGame::on_actionInitGame_triggered() {
