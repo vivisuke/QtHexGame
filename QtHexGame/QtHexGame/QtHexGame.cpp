@@ -2,6 +2,7 @@
 #include "Board.h"
 
 Board *g_bd = nullptr;
+Global g;
 
 QtHexGame::QtHexGame(QWidget *parent)
     : QMainWindow(parent)

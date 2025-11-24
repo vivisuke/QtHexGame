@@ -3,6 +3,7 @@
 #include "BoardWidget.h"
 
 extern Board *g_bd;
+extern Global g;
 
 const int N_HORZ = 4;
 const int fr = 40;	//	上下左右空白
@@ -149,7 +150,8 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
     auto xy = posToXY(pos);
     qDebug() << "x, y = " << xy;
     if( xy.x() < 0 || xy.x() >= N_HORZ || xy.y() < 0 || xy.y() >= N_HORZ ) return;
-    g_bd->set_color(xy.x(), xy.y(), BLACK);
+    g_bd->set_color(xy.x(), xy.y(), g.m_next);
+    g.m_next = (BLACK+WHITE) - g.m_next;
     this->update();
 }
 void BoardWidget::on_actionInitGame_triggered() {
