@@ -19,6 +19,7 @@ protected:
     void do_connect_actions();
 
 public slots:
+    void on_actionExit_triggered();
     void on_actionInitGame_triggered();
     void update_next();
 

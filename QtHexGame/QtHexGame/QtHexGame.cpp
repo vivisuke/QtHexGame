@@ -38,6 +38,8 @@ void QtHexGame::do_connect_actions() {
     //connect(ui->board, &BoardWidget::next_changed, 
     //    this, &QtHexGame::update_next);
 
+    connect(ui->action_eXit, &QAction::triggered, 
+        this, &QtHexGame::on_actionExit_triggered);
     connect(ui->action_Init, &QAction::triggered, 
         this, &QtHexGame::on_actionInitGame_triggered);
 }
@@ -56,6 +58,9 @@ void QtHexGame::update_next() {
 	}
 }
 
+void QtHexGame::on_actionExit_triggered() {
+	QApplication::quit();
+}
 void QtHexGame::on_actionInitGame_triggered() {
 	qDebug() << "QtHexGame::on_actionInitGame_triggered()";
 	g.init();

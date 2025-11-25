@@ -239,12 +239,12 @@
     <property name="title">
      <string>&amp;Game</string>
     </property>
-    <addaction name="actionGame_Start"/>
+    <addaction name="action_game_Start"/>
     <addaction name="action_Pause"/>
     <addaction name="action_Init"/>
     <addaction name="action_Undo"/>
     <addaction name="separator"/>
-    <addaction name="actione_Xit"/>
+    <addaction name="action_eXit"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -258,13 +258,13 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionGame_Start"/>
+   <addaction name="action_game_Start"/>
    <addaction name="action_Pause"/>
    <addaction name="action_Init"/>
    <addaction name="action_Undo"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionGame_Start">
+  <action name="action_game_Start">
    <property name="icon">
     <iconset>
      <normaloff>resources/play_black.png</normaloff>resources/play_black.png</iconset>
@@ -273,7 +273,7 @@
     <string>Game &amp;Start</string>
    </property>
   </action>
-  <action name="actione_Xit">
+  <action name="action_eXit">
    <property name="text">
     <string>e&amp;Xit</string>
    </property>
