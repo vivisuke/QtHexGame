@@ -12,6 +12,7 @@ public:
 public:
 	QPointF	xyToPoint(int x, int y) const;
 	void	drawStone(QPainter&, int x, int y, Color col) const;
+	void	drawStoneEnph(QPainter&, int x, int y) const;
 	QPoint	posToXY(QPoint pos) const;
 
 protected:

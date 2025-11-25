@@ -118,13 +118,20 @@ void BoardWidget::paintEvent(QPaintEvent* event)
 				drawStone(painter, x, y, col);
 	    }
     }
+    auto ix = g_bd->get_last_put_ix();
+    if( ix != 0 )
+    	drawStoneEnph(painter, g_bd->ixToX(ix), g_bd->ixToY(ix));
+}
+void BoardWidget::drawStoneEnph(QPainter& painter, int x, int y) const {
+	double R = m_cellWd / 2 * 0.25;
+	auto center = xyToPoint(x, y);
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(QBrush(QColor("#80f080")));
+    painter.drawEllipse(center, R, R);
 }
 void BoardWidget::drawStone(QPainter& painter, int x, int y, Color col) const {
 	double R = m_cellWd / 2 * 0.75;
 	auto center = xyToPoint(x, y);
-	// ──────────────────────────────
-    // 1. ふわっとした影（一番簡単で綺麗！）
-    // ──────────────────────────────
     QRadialGradient shadowGrad(center, R * 1.0);   // 影は石よりちょっと大きい
     shadowGrad.setColorAt(0.0, QColor(0, 0, 0, 80));   // 中心は濃いめ
     shadowGrad.setColorAt(0.6, QColor(0, 0, 0, 70));
@@ -150,8 +157,11 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
     qDebug() << "クリック位置:" << pos;
     auto xy = posToXY(pos);
     qDebug() << "x, y = " << xy;
-    if( xy.x() < 0 || xy.x() >= g.N_HORZ || xy.y() < 0 || xy.y() >= g.N_HORZ ) return;
-    g_bd->set_color(xy.x(), xy.y(), g.m_next);
+    int x = xy.x();
+    int y = xy.y();
+    if( x < 0 || x >= g.N_HORZ || y < 0 || y >= g.N_HORZ ) return;
+    g_bd->set_color(x, y, g.m_next);
+    g_bd->set_last_put_xy(x, y);
     g.m_next = (BLACK+WHITE) - g.m_next;
     auto* mw = qobject_cast<QtHexGame*>(QApplication::activeWindow());
     mw->update_next();
