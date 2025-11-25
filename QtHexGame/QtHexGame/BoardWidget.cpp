@@ -162,6 +162,11 @@ void BoardWidget::mousePressEvent(QMouseEvent *event) {
     if( x < 0 || x >= g.N_HORZ || y < 0 || y >= g.N_HORZ ) return;
     g_bd->set_color(x, y, g.m_next);
     g_bd->set_last_put_xy(x, y);
+    if( g.m_next == BLACK && g_bd->is_vert_connected() ) {
+    	qDebug() << "BLACK won.";
+    } else if( g.m_next == WHITE && g_bd->is_horz_connected() ) {
+    	qDebug() << "WHITE won.";
+    }
     g.m_next = (BLACK+WHITE) - g.m_next;
     auto* mw = qobject_cast<QtHexGame*>(QApplication::activeWindow());
     mw->update_next();
