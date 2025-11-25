@@ -60,5 +60,6 @@ void QtHexGame::on_actionInitGame_triggered() {
 	qDebug() << "QtHexGame::on_actionInitGame_triggered()";
 	g.init();
 	g_bd->init();
+	update_next();
 	ui->board->update();
 }

@@ -108,6 +108,11 @@
           </item>
           <item>
            <widget class="QComboBox" name="comboBox">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
             <item>
              <property name="text">
               <string>Human</string>
@@ -183,6 +188,11 @@
           </item>
           <item>
            <widget class="QComboBox" name="comboBox_2">
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
             <item>
              <property name="text">
               <string>Human</string>
@@ -232,6 +242,7 @@
     <addaction name="actionGame_Start"/>
     <addaction name="action_Pause"/>
     <addaction name="action_Init"/>
+    <addaction name="action_Undo"/>
     <addaction name="separator"/>
     <addaction name="actione_Xit"/>
     <addaction name="separator"/>
@@ -250,6 +261,7 @@
    <addaction name="actionGame_Start"/>
    <addaction name="action_Pause"/>
    <addaction name="action_Init"/>
+   <addaction name="action_Undo"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionGame_Start">
@@ -282,6 +294,15 @@
    </property>
    <property name="text">
     <string>&amp;Pause</string>
+   </property>
+  </action>
+  <action name="action_Undo">
+   <property name="icon">
+    <iconset>
+     <normaloff>resources/undo.png</normaloff>resources/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
    </property>
   </action>
  </widget>
